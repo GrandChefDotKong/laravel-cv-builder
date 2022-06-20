@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Profile\ShowController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -15,6 +16,10 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
+});
+
+Route::middleware('auth')->prefix('profile')->as('profile.')->group(function() {
+    Route::get('/', ShowController::class)->name('show');
 });
 
 Route::get('/dashboard', function () {
