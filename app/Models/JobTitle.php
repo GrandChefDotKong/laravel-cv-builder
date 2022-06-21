@@ -11,6 +11,8 @@ class JobTitle extends Model
 {
     use HasFactory;
 
+    protected $guarded = [];
+
     public function experiences(): HasMany {
         return $this->belongTo(Experience::class);
     }

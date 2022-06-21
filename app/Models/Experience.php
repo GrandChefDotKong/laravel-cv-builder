@@ -10,16 +10,41 @@ class Experience extends Model  {
 
     use HasFactory;
 
+    protected $fillable = [
+        'description',
+        'current',
+        'started_at',
+        'finished_at',
+        'job_title_id',
+        'company_id',
+        'sort',
+    ];
+
+    protected $casts = [
+        'current' => 'boolean', 
+        'started_at' => 'date',
+        'finished' => 'date',
+    ];
+
     public function profile(): BelongsTo {
-        return $this->belongsTo(Profile::class);
+        return $this->belongsTo(
+            related: Profile::class,
+            foreignKey: 'profile_id' 
+        );
     }
     
     public function jobTitle(): BelongsTo {
-        return $this->belongsTo(JobTitle::class);
+        return $this->belongsTo(
+            related: JobTitle::class,
+            foreignKey: 'job_title_id' 
+        );
     }
 
     public function company(): BelongsTo {
-        return $this->belongsTo(Company::class);
+        return $this->belongsTo(
+            related: Company::class,
+            foreignKey: 'company_id' 
+        );
     } 
 
 }

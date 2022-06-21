@@ -12,15 +12,26 @@ class Profile extends Model
 {
     use HasFactory;
 
+    protected $guarded = [];
+
     public function user(): BelongsTo {
-        return $this->belongTo(User::class);
+        return $this->belongTo(
+            related: User::class,
+            foreignKey: 'profile_id'
+        );
     }
 
     public function experiences(): HasMany {
-        return $this->belongTo(Experience::class);
+        return $this->hasMany(
+            related: Experience::class,
+            foreignKey: 'profile_id'
+        );
     }
 
     public function links(): HasMany {
-        return $this->belongTo(Link::class);
+        return $this->hasMany(
+            related : Link::class,
+            foreignKey: 'profile_id'
+        );
     }
 }

@@ -18,6 +18,12 @@
                     <x-nav-link :href="route('profile.show')" :active="request()->routeIs('profile.show')">
                         {{ __('My Profile') }}
                     </x-nav-link>
+                    <x-nav-link :href="route('profile.experiences.show')" :active="request()->routeIs('profile.experiences.show')">
+                        {{ __('My Experiences') }}
+                    </x-nav-link>
+                    <x-nav-link :href="route('profile.links.show')" :active="request()->routeIs('profile.links.show')">
+                        {{ __('Template') }}
+                    </x-nav-link>
                 </div>
             </div>
 
